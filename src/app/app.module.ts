@@ -9,10 +9,15 @@ import { ListPage } from '../pages/list/list';
 import { ProfilePage } from '../pages/profile/profile';
 
 import { EstimoteBeacons } from '@ionic-native/estimote-beacons';
+import { IBeacon } from '@ionic-native/ibeacon';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { BeaconsProvider } from '../providers/beacons/beacons';
 import { PawsDatastoreProvider } from '../providers/paws-datastore/paws-datastore';
+
+import { ComponentsModule } from '../components/components.module';
+import { EstimoteBeaconsProvider } from '../providers/estimote-beacons/estimote-beacons';
+import { IbeaconsProvider } from '../providers/ibeacons/ibeacons';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,7 @@ import { PawsDatastoreProvider } from '../providers/paws-datastore/paws-datastor
   imports: [
     BrowserModule,
     HttpModule,
+    ComponentsModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -34,12 +40,15 @@ import { PawsDatastoreProvider } from '../providers/paws-datastore/paws-datastor
     ProfilePage
   ],
   providers: [
+    IBeacon,
     EstimoteBeacons,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BeaconsProvider,
-    PawsDatastoreProvider    
+    PawsDatastoreProvider,
+    EstimoteBeaconsProvider,
+    IbeaconsProvider    
   ]
 })
 export class AppModule {}

@@ -1,9 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
+import { EstimoteBeacons } from '@ionic-native/estimote-beacons';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { ListPage } from '../pages/list/list';
 import { ProfilePage } from '../pages/profile/profile';
 
 @Component({
@@ -16,12 +18,13 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public eb:EstimoteBeacons) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
+      { title: 'Beacons', component: ListPage },
       { title: 'Profile', component: ProfilePage }
     ];
 
@@ -32,7 +35,12 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      // this.eb.requestWhenInUseAuthorization().then((success) => {
+      //   console.log('Requested Authorization!');
+        this.splashScreen.hide();
+      // },(error)=>{
+      //   console.log('Cannot get permissions!')
+      // })      
     });
   }
 
