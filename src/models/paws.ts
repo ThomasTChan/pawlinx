@@ -7,7 +7,7 @@ export interface Paw {
     dob: string;
     colour: string;
     sex?: string;
-    favouriteFood: string;
+    favouriteFood?: string;
     hobbies?: Array<string>;    
     tag?: Tag;
     temperature?: number | string;
@@ -18,6 +18,7 @@ export interface Owner {
     dob: string;
     sex: string;
     picture: string;
+    occuption?: string;
     location?: Location;
     contact?: Contact;
 }
