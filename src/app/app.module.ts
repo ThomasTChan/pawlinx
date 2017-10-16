@@ -19,6 +19,7 @@ import { PawsDatastoreProvider } from '../providers/paws-datastore/paws-datastor
 import { ComponentsModule } from '../components/components.module';
 import { EstimoteBeaconsProvider } from '../providers/estimote-beacons/estimote-beacons';
 import { IbeaconsProvider } from '../providers/ibeacons/ibeacons';
+import { GlobalStateService} from '../providers/services/global-state.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { IbeaconsProvider } from '../providers/ibeacons/ibeacons';
     BeaconsProvider,
     PawsDatastoreProvider,
     EstimoteBeaconsProvider,
-    IbeaconsProvider    
+    IbeaconsProvider,
+    GlobalStateService
   ]
 })
 export class AppModule {}
