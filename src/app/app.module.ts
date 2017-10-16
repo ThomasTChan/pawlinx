@@ -8,6 +8,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ProfilePage } from '../pages/profile/profile';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { OwnerProfilePage } from '../pages/owner-profile/owner-profile';
+
 
 import { EstimoteBeacons } from '@ionic-native/estimote-beacons';
 import { IBeacon } from '@ionic-native/ibeacon';
@@ -15,6 +17,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { BeaconsProvider } from '../providers/beacons/beacons';
 import { PawsDatastoreProvider } from '../providers/paws-datastore/paws-datastore';
+import { ProfileDatastoreProvider } from '../providers/profile-datastore/profile-datastore';
 
 import { ComponentsModule } from '../components/components.module';
 import { EstimoteBeaconsProvider } from '../providers/estimote-beacons/estimote-beacons';
@@ -27,7 +30,8 @@ import { GlobalStateService} from '../providers/services/global-state.service';
     HomePage,
     ListPage,
     ProfilePage,
-    WelcomePage
+    WelcomePage,
+    OwnerProfilePage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,8 @@ import { GlobalStateService} from '../providers/services/global-state.service';
     HomePage,
     ListPage,
     ProfilePage,
-    WelcomePage
+    WelcomePage,
+    OwnerProfilePage
   ],
   providers: [
     IBeacon,
@@ -51,6 +56,7 @@ import { GlobalStateService} from '../providers/services/global-state.service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BeaconsProvider,
     PawsDatastoreProvider,
+    ProfileDatastoreProvider,
     EstimoteBeaconsProvider,
     IbeaconsProvider,
     GlobalStateService
