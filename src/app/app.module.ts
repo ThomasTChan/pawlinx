@@ -7,6 +7,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ProfilePage } from '../pages/profile/profile';
+import { WelcomePage } from '../pages/welcome/welcome';
 
 import { EstimoteBeacons } from '@ionic-native/estimote-beacons';
 import { IBeacon } from '@ionic-native/ibeacon';
@@ -24,7 +25,8 @@ import { IbeaconsProvider } from '../providers/ibeacons/ibeacons';
     MyApp,
     HomePage,
     ListPage,
-    ProfilePage
+    ProfilePage,
+    WelcomePage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { IbeaconsProvider } from '../providers/ibeacons/ibeacons';
     MyApp,
     HomePage,
     ListPage,
-    ProfilePage
+    ProfilePage,
+    WelcomePage
   ],
   providers: [
     IBeacon,
