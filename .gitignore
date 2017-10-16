@@ -17,9 +17,11 @@ npm-debug.log*
 .sass-cache/
 .tmp/
 .versions/
+bower_components/
 coverage/
 dist/
 node_modules/
+src/assets/vendor/bower_components/
 tmp/
 temp/
 hooks/
