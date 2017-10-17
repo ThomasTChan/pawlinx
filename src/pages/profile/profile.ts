@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Paw } from '../../models/paws';
 import { ProfileDatastoreProvider } from '../../providers/profile-datastore/profile-datastore';
+import { OwnerProfilePage } from '../owner-profile/owner-profile'
 
 /**
  * Generated class for the ProfilePage page.
@@ -38,6 +39,10 @@ export class ProfilePage {
   // getOwnerProfile() {
   //   return this.profile;
   // }
+
+  goToOwnerProfile() {
+    this.navCtrl.push(OwnerProfilePage);
+  }
 
   ionViewDidEnter() {
     this.profileStore.getProfile().then(function (data) {

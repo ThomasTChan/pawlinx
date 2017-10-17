@@ -18,23 +18,32 @@
 <ion-content fullscreen>
 
   <figure class="snip1336">
-    <img src="https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Natural-Dog-Law-2-To-dogs%2C-energy-is-everything.jpg?itok=Z-ujUOUr"
+    <img src="https://static.pexels.com/photos/271819/pexels-photo-271819.jpeg"
       alt="sample87" />
     <figcaption>
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample4.jpg" alt="profile-sample4" class="profile"
-      />
+      <img src="https://orig00.deviantart.net/dab1/f/2012/152/f/2/golden_retriever_puppy_painting_by_silverwillows4-d51xj26.jpg" alt="profile-sample4" class="profile"/>
       <h2>Comet<span>Golden Retriever</span></h2>      
-      <p>
+      <!-- <p>
         This is my profile. Here is some info about my pet and myself.
-      </p>
-      <a href="#" class="follow">Follow</a>
-      <a href="#" class="info">Owner Info</a>
+      </p> -->
       <ul>
         <li>
           Craves eating <b>{{profileData.favouriteFood}}</b>
         </li>
         <li *ngFor="let hobby of profileData.hobbies">Loves <b>{{hobby}}</b></li>
       </ul>
+
+      <a href="#" class="follow">Follow</a>
+      <!-- <a href="#" class="info">Owner Info</a> -->
+      <a class="info"(click)="goToOwnerProfile()">
+        Owner Info
+      </a>
+      <!-- <ul>
+        <li>
+          Craves eating <b>{{profileData.favouriteFood}}</b>
+        </li>
+        <li *ngFor="let hobby of profileData.hobbies">Loves <b>{{hobby}}</b></li>
+      </ul> -->
 
     </figcaption>
 
