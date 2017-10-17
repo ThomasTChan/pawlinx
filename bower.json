@@ -1,0 +1,22 @@
+{
+  "name": "pawlinx",
+  "description": "pawlinx client",
+  "main": "",
+  "authors": [
+    "Thomas Chan"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/assets/vendor/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "aws-sign-web": "^1.2.2"
+  }
+}
