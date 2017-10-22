@@ -22,7 +22,10 @@ import { ProfileDatastoreProvider } from '../providers/profile-datastore/profile
 import { ComponentsModule } from '../components/components.module';
 import { EstimoteBeaconsProvider } from '../providers/estimote-beacons/estimote-beacons';
 import { IbeaconsProvider } from '../providers/ibeacons/ibeacons';
-import { GlobalStateService} from '../providers/services/global-state.service';
+import { GlobalStateService } from '../providers/services/global-state.service';
+
+import { ApolloModule } from 'apollo-angular';
+import { provideClient } from '../graphql/graphql-client';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { GlobalStateService} from '../providers/services/global-state.service';
     HttpModule,
     ComponentsModule,
     IonicModule.forRoot(MyApp),
+    ApolloModule.forRoot(provideClient)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,7 +57,7 @@ import { GlobalStateService} from '../providers/services/global-state.service';
     EstimoteBeacons,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     BeaconsProvider,
     PawsDatastoreProvider,
     ProfileDatastoreProvider,
@@ -62,4 +66,4 @@ import { GlobalStateService} from '../providers/services/global-state.service';
     GlobalStateService
   ]
 })
-export class AppModule {}
+export class AppModule { }

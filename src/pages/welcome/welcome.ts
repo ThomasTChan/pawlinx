@@ -6,6 +6,7 @@ import {
   UserLoginService, IUserLogin, UserState,
   UserRegistrationService, CognitoUtil
 } from '../../providers/services/aws-account.service';
+import { updateAwsApiGwClient } from '../../graphql/graphql-client';
 
 /**
  * Generated class for the WelcomePage page.
@@ -57,7 +58,8 @@ export class WelcomePage {
         this.showLoginSuccessAlert(this.registerCredentials.username, () => {
           this.globals.userId = this.globals.getUserId();
           this.globals.setViewAdminFeaturesOverride(this.globals.isAdminRole());
-          this.navCtrl.setRoot(HomePage);
+          updateAwsApiGwClient();
+          this.navCtrl.setRoot(HomePage);          
           this.navCtrl.popToRoot({ animate: false });          
           
         });
