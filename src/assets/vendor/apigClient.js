@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://b1szzyfwfi.execute-api.ca-central-1.amazonaws.com/dev';
+    var invokeUrl = 'https://ekjnn8icvj.execute-api.ca-central-1.amazonaws.com/development';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -191,6 +191,78 @@ apigClientFactory.newClient = function (config) {
     };
     
     
+    apigClient.v1OwnersMetadataPost = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var v1OwnersMetadataPostRequest = {
+            verb: 'post'.toUpperCase(),
+            path: pathComponent + uritemplate('/v1/owners/metadata').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(v1OwnersMetadataPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.v1OwnersMetadataBeaconPost = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var v1OwnersMetadataBeaconPostRequest = {
+            verb: 'post'.toUpperCase(),
+            path: pathComponent + uritemplate('/v1/owners/metadata/beacon').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(v1OwnersMetadataBeaconPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.v1OwnersMetadataBeaconBeaconIdGet = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var v1OwnersMetadataBeaconBeaconIdGetRequest = {
+            verb: 'get'.toUpperCase(),
+            path: pathComponent + uritemplate('/v1/owners/metadata/beacon/{beaconId}').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(v1OwnersMetadataBeaconBeaconIdGetRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.v1OwnersOwnerIdMetadataGet = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var v1OwnersOwnerIdMetadataGetRequest = {
+            verb: 'get'.toUpperCase(),
+            path: pathComponent + uritemplate('/v1/owners/{ownerId}/metadata').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(v1OwnersOwnerIdMetadataGetRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
     apigClient.v1PawsGet = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
@@ -224,6 +296,132 @@ apigClientFactory.newClient = function (config) {
         
         
         return apiGatewayClient.makeRequest(v1PawsPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.v1PawsMetadataPost = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var v1PawsMetadataPostRequest = {
+            verb: 'post'.toUpperCase(),
+            path: pathComponent + uritemplate('/v1/paws/metadata').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(v1PawsMetadataPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.v1PawsMetadataBeaconPost = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var v1PawsMetadataBeaconPostRequest = {
+            verb: 'post'.toUpperCase(),
+            path: pathComponent + uritemplate('/v1/paws/metadata/beacon').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(v1PawsMetadataBeaconPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.v1PawsMetadataBeaconBeaconIdGet = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var v1PawsMetadataBeaconBeaconIdGetRequest = {
+            verb: 'get'.toUpperCase(),
+            path: pathComponent + uritemplate('/v1/paws/metadata/beacon/{beaconId}').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(v1PawsMetadataBeaconBeaconIdGetRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.v1PawsPawIdGet = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var v1PawsPawIdGetRequest = {
+            verb: 'get'.toUpperCase(),
+            path: pathComponent + uritemplate('/v1/paws/{pawId}').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(v1PawsPawIdGetRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.v1PawsPawIdPut = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var v1PawsPawIdPutRequest = {
+            verb: 'put'.toUpperCase(),
+            path: pathComponent + uritemplate('/v1/paws/{pawId}').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(v1PawsPawIdPutRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.v1PawsPawIdDelete = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var v1PawsPawIdDeleteRequest = {
+            verb: 'delete'.toUpperCase(),
+            path: pathComponent + uritemplate('/v1/paws/{pawId}').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(v1PawsPawIdDeleteRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.v1PawsPawIdMetadataGet = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var v1PawsPawIdMetadataGetRequest = {
+            verb: 'get'.toUpperCase(),
+            path: pathComponent + uritemplate('/v1/paws/{pawId}/metadata').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(v1PawsPawIdMetadataGetRequest, authType, additionalParams, config.apiKey);
     };
     
 

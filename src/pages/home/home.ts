@@ -9,12 +9,11 @@ import gql from 'graphql-tag';
 
 const GetPaw = gql`
 query GetPaw{
-  paw(dogId:12){
-    dogId
+  paw(pawId:"982a6ba0-cd89-11e7-b0be-0b7f406cd258"){
+    pawId
     type
     name
     picture
-    owner
     weight
     dob
     sex
