@@ -9,7 +9,7 @@ import gql from 'graphql-tag';
 
 const GetPaw = gql`
 query GetPaw{
-  paw(pawId:"982a6ba0-cd89-11e7-b0be-0b7f406cd258"){
+  paw(pawId:"1b16b8d0-cd93-11e7-b03c-2166bda1310f") {
     pawId
     type
     name
@@ -19,6 +19,24 @@ query GetPaw{
     sex
     favouriteFood
     temperature
+    owner {
+      ownerId
+      name
+      dob
+      sex
+      picture
+      paws {
+        pawId
+        type
+        name
+        picture
+        weight
+        dob
+        sex
+        favouriteFood
+        temperature
+      }
+    }
   }
 }
 `;
