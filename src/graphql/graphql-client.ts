@@ -1,6 +1,7 @@
 import { AwsApiGwClient, AwsApiGwNetworkInterface } from "apollo-client-aws-ni/api-gw-connector";
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
 import { ApolloModule } from 'apollo-angular';
+import { Config } from '../config/config';
 
 declare var apigClientFactory: any; // being the AWS API GW generated SDK root object (to be imported in main html file)
 
@@ -12,7 +13,7 @@ export function updateAwsApiGwClient(): void {
         accessKey: localStorage.getItem('userTokens.awsAccessKeyId'),
         secretKey: localStorage.getItem('userTokens.awsSecretAccessKey'),
         sessionToken: localStorage.getItem('userTokens.awsSessionToken'),
-        region: 'ca-central-1'
+        region: Config['APIG_REGION']
     });
     clientSet = true;
 };

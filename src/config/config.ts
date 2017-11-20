@@ -1,4 +1,5 @@
 export let Config = {
+    APIG_REGION:"ca-central-1",
     REGION:"us-east-1",
     IDENTITY_POOL_ID:"us-east-1:8d9eb838-0381-4d82-a4eb-1be28bace6e0",
     USER_POOL_ID:"us-east-1_T6R0ovZgr",
