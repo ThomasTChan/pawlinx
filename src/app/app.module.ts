@@ -26,6 +26,7 @@ import { GlobalStateService } from '../providers/services/global-state.service';
 
 import { ApolloModule } from 'apollo-angular';
 import { provideClient } from '../graphql/graphql-client';
+import { graphqlPawQueryProvider } from '../graphql/query/graphql-paw-query';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { provideClient } from '../graphql/graphql-client';
     ProfileDatastoreProvider,
     EstimoteBeaconsProvider,
     IbeaconsProvider,
+    graphqlPawQueryProvider,
     GlobalStateService
   ]
 })

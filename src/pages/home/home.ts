@@ -4,42 +4,7 @@ import { Paw } from '../../models/paws';
 import { PawsDatastoreProvider } from '../../providers/paws-datastore/paws-datastore';
 import { EstimoteBeaconsProvider } from '../../providers/estimote-beacons/estimote-beacons';
 import { IbeaconsProvider } from '../../providers/ibeacons/ibeacons';
-import { Apollo, ApolloQueryObservable } from 'apollo-angular';
-import gql from 'graphql-tag';
-
-const GetPaw = gql`
-query GetPaw{
-  paw(pawId:"1b16b8d0-cd93-11e7-b03c-2166bda1310f") {
-    pawId
-    type
-    name
-    picture
-    weight
-    dob
-    sex
-    favouriteFood
-    temperature
-    owner {
-      ownerId
-      name
-      dob
-      sex
-      picture
-      paws {
-        pawId
-        type
-        name
-        picture
-        weight
-        dob
-        sex
-        favouriteFood
-        temperature
-      }
-    }
-  }
-}
-`;
+import { graphqlPawQueryProvider } from '../../graphql/query/graphql-paw-query';
 
 @Component({
   selector: 'page-home',
@@ -49,9 +14,14 @@ export class HomePage {
 
   paws: Array<Paw>;
   queryResult: any = {};
-  queryObservable: ApolloQueryObservable<any>;
 
-  constructor(public navCtrl: NavController, private pawStore: PawsDatastoreProvider, private ebProvider: EstimoteBeaconsProvider, private ibProvider: IbeaconsProvider, private apollo: Apollo) {
+  constructor(
+    public navCtrl: NavController, 
+    private pawStore: PawsDatastoreProvider, 
+    private ebProvider: EstimoteBeaconsProvider, 
+    private ibProvider: IbeaconsProvider, 
+    private gqlPawQuery: graphqlPawQueryProvider
+  ) {
     this.pawStore.paws.subscribe(
       _paws => {
         this.paws = _paws;
@@ -61,18 +31,14 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
-    this.queryObservable = this
-    .apollo
-    .watchQuery({ query: GetPaw });
-
-    this.queryObservable.subscribe(({data}) => {
-      console.log('got query result',data);
-      this.queryResult = data.paw      
+    this.gqlPawQuery.getPaw("24a92ae0-d25c-11e7-bb86-7b6f7b6add22").subscribe(({ data }) => {
+      console.log('got query result', data);
+      this.queryResult = data.paw
     })
   }
 
 
-  ionViewDidEnter() {    
+  ionViewDidEnter() {
 
     this.pawStore.stubbedScanning(100)
     // this.ebProvider.startRangingIBeacon();
