@@ -16,10 +16,10 @@ export class HomePage {
   queryResult: any = {};
 
   constructor(
-    public navCtrl: NavController, 
-    private pawStore: PawsDatastoreProvider, 
-    private ebProvider: EstimoteBeaconsProvider, 
-    private ibProvider: IbeaconsProvider, 
+    public navCtrl: NavController,
+    private pawStore: PawsDatastoreProvider,
+    private ebProvider: EstimoteBeaconsProvider,
+    private ibProvider: IbeaconsProvider,
     private gqlPawQuery: graphqlPawQueryProvider
   ) {
     this.pawStore.paws.subscribe(
@@ -34,6 +34,13 @@ export class HomePage {
     this.gqlPawQuery.getPaw("24a92ae0-d25c-11e7-bb86-7b6f7b6add22").subscribe(({ data }) => {
       console.log('got query result', data);
       this.queryResult = data.paw
+    })
+    this.gqlPawQuery.getPawMetadataByBeaconIds([
+      "6477637355",
+      "5927943861",
+      "5554060520"
+    ]).subscribe(({ data }) => {
+      console.log('got query result', data);      
     })
   }
 
