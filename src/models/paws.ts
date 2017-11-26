@@ -1,6 +1,9 @@
 export interface Paw {
-    type: string;
+    accountId?: String;
+    beaconId?: String;
+    pawId?: String;
     name: string;
+    type: string;    
     picture: string;
     owner: Owner;
     weight: number | string;
@@ -14,6 +17,9 @@ export interface Paw {
 }
 
 export interface Owner {
+    accountId?: String;
+    beaconIds?: Array<string>;
+    ownerId?: String;
     name: string;
     dob: string;
     sex: string;

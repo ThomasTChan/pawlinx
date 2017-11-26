@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { IBeacon } from '@ionic-native/ibeacon';
-import { BehaviorSubject } from 'rxjs/Rx'
+import { BehaviorSubject } from 'rxjs/Rx';
+import { BEACON_CONFIG } from '../../config/config';
 import * as _ from 'lodash';
 import 'rxjs/add/operator/map';
 
@@ -25,15 +26,15 @@ export class IbeaconsProvider {
   
   // The Estimote Beacon Region Setting
   private BeaconRegionSetting: IBeaconRegion = {
-    uuid: 'D0D3FA86-CA76-45EC-9BD9-6AF4BEAC8EDA'
+    uuid: BEACON_CONFIG.BeaconRegion.uuid
   }
 
   constructor(public http: Http, private ib: IBeacon) {
     console.log('Hello IbeaconsProvider Provider');
     this._frequency = 500;
     this._ibeacons = new BehaviorSubject([]);
-    this.ib.onDomDelegateReady().then(function(success){
-      console.log('OS did wake up phone')
+    this.ib.onDomDelegateReady().then(function(success){      
+      console.log('OS did wake up phone');
     })
   }
 
@@ -42,15 +43,15 @@ export class IbeaconsProvider {
   }
 
   startRanging(){
-    console.log('start ranging IBEACON')
+    console.log('start ranging IBEACON:',BEACON_CONFIG.BeaconRegion.identifier,BEACON_CONFIG.BeaconRegion.uuid)
     var delegate = this.ib.Delegate();
-    var beaconRegion = this.ib.BeaconRegion('dog','D0D3FA86-CA76-45EC-9BD9-6AF4BEAC8EDA')    
+    var beaconRegion = this.ib.BeaconRegion(BEACON_CONFIG.BeaconRegion.identifier,BEACON_CONFIG.BeaconRegion.uuid)    
     this.ib.requestAlwaysAuthorization().then(()=>{
       console.log('IBEACON Requested Authorization!!')      
     });
     this.ib.startRangingBeaconsInRegion(beaconRegion)
     .then(
-      () => console.log('Native layer recieved the request to ranging'),
+      () => console.log('Native layer recieved the request to ranging',beaconRegion),
       error => console.error('Native layer failed to begin ranging: ', error)
     );
     delegate.didRangeBeaconsInRegion()
@@ -59,6 +60,10 @@ export class IbeaconsProvider {
         console.log('!!RANGING!!')
         console.log(data.beacons);              
         this._ibeacons.next(data.beacons);
+      },
+      error => {
+        console.log('RANGING ERROR');
+        console.log(error);
       }
     )
     delegate.didEnterRegion()

@@ -29,9 +29,12 @@ export class PawsDatastoreProvider {
       setTimeout(() => {
         this._paws.next([
           {
-            type: 'Dog',
+            accountId: 'offlineContext_cognitoIdentityId_1',
+            beaconId: 'offlineContext_cognitoIdentityId_beaconId_1',
+            pawId: 'af28eb20-d0b2-11e7-99a3-f7022f3935e3',
+            type: 'French Bulldog',
             name: 'Charlie',
-            picture: 'https://dailypost.in/wp-content/uploads/2017/07/patna-pirates-m52-3.jpg',            
+            picture: 'https://dailypost.in/wp-content/uploads/2017/07/patna-pirates-m52-3.jpg',
             weight: '85 lbs',
             dob: 'January 12, 2010',
             colour: 'white',
@@ -44,9 +47,12 @@ export class PawsDatastoreProvider {
             }
           },
           {
-            type: 'Dog',
+            accountId: 'offlineContext_cognitoIdentityId_2',
+            beaconId: 'offlineContext_cognitoIdentityId_beaconId_2',
+            pawId: '036566f0-d0b3-11e7-99a3-f7022f3935e3',
+            type: 'Shiba Inu',
             name: 'Samurai Jack',
-            picture: 'https://static.boredpanda.com/blog/wp-content/uploads/2017/06/pet-dog-cat-armor-samurai-age-japan-7a.jpg',            
+            picture: 'https://static.boredpanda.com/blog/wp-content/uploads/2017/06/pet-dog-cat-armor-samurai-age-japan-7a.jpg',
             weight: '112 lbs',
             dob: 'November 27, 2009',
             colour: 'brown & white',
@@ -59,9 +65,12 @@ export class PawsDatastoreProvider {
             }
           },
           {
+            accountId: 'offlineContext_cognitoIdentityId_3',
+            beaconId: 'offlineContext_cognitoIdentityId_beaconId_3',
+            pawId: '5d703e90-d0b3-11e7-99a3-f7022f3935e3',
             type: 'Dog',
             name: 'Bobby',
-            picture: 'https://4.imimg.com/data4/KI/JY/MY-3281174/pet-dogs-250x250.jpg',            
+            picture: 'https://4.imimg.com/data4/KI/JY/MY-3281174/pet-dogs-250x250.jpg',
             weight: '35 lbs',
             dob: 'October 2, 2011',
             colour: 'white',
