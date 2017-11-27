@@ -21,8 +21,8 @@ export interface Owner {
     beaconIds?: Array<string>;
     ownerId?: String;
     name: string;
-    dob: string;
-    sex: string;
+    dob?: string;
+    sex?: string;
     picture: string;
     occuption?: string;
     location?: Location;

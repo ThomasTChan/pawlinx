@@ -10,15 +10,19 @@ import * as _ from 'lodash';
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{ title: string, note: string, icon: string }>;  
+  items: Array<{ title: string, note: string, icon: string }>;
   ibeacons: Array<IBeaconRegion>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private ib: IbeaconsProvider) {    
+  constructor(public navCtrl: NavController, public navParams: NavParams, private ib: IbeaconsProvider) {
     this.ibeacons = [];
     this.ib.ibeacons.subscribe(
-      beacons => {        
-        this.ibeacons = beacons;
+      data => {
+        this.ibeacons = data.beacons;
+      },
+      error => {
+        console.log('RANGING ERROR');
+        console.log(error);
       }
-    );    
-  }  
+    );
+  }
 }

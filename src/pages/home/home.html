@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Furri's Nearby</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -15,15 +15,13 @@
         <img [src]="paw.owner.picture">
       </ion-avatar>
       <h2>{{paw.owner.name}}</h2>
-      <p>{{paw.owner.dob}}</p>
-      <p>Pet Name: {{queryResult.name}}</p>
+      <p>Pet Name: {{paw.name}}</p>
     </ion-item>
 
     <img [src]="paw.picture">
 
     <ion-card-content>
-      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
-        Whoa. This is heavy.</p>
+      <p>Status Update Goes Here!</p>
     </ion-card-content>
 
     <ion-row>

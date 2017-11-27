@@ -18,9 +18,6 @@ export interface IBeaconRegion {
 @Injectable()
 export class IbeaconsProvider {
 
-  // List of paws found
-  private _ibeacons: BehaviorSubject<Array<any>>;
-
   // The sample rate of an observable
   private _frequency: number;  
   
@@ -30,16 +27,14 @@ export class IbeaconsProvider {
   }
 
   constructor(public http: Http, private ib: IBeacon) {
-    console.log('Hello IbeaconsProvider Provider');
-    this._frequency = 500;
-    this._ibeacons = new BehaviorSubject([]);
+    this._frequency = 500;    
     this.ib.onDomDelegateReady().then(function(success){      
       console.log('OS did wake up phone');
     })
   }
 
   get ibeacons() {
-    return this._ibeacons.asObservable().sampleTime(this._frequency);
+    return this.ib.Delegate().didRangeBeaconsInRegion().sampleTime(this._frequency);    
   }
 
   startRanging(){
@@ -54,18 +49,6 @@ export class IbeaconsProvider {
       () => console.log('Native layer recieved the request to ranging',beaconRegion),
       error => console.error('Native layer failed to begin ranging: ', error)
     );
-    delegate.didRangeBeaconsInRegion()
-    .subscribe(
-      data => {
-        console.log('!!RANGING!!')
-        console.log(data.beacons);              
-        this._ibeacons.next(data.beacons);
-      },
-      error => {
-        console.log('RANGING ERROR');
-        console.log(error);
-      }
-    )
     delegate.didEnterRegion()
     .subscribe(
       data => {

@@ -13,7 +13,6 @@ import { graphqlPawQueryProvider } from '../../graphql/query/graphql-paw-query';
 export class HomePage {
 
   paws: Array<Paw>;
-  queryResult: any = {};
 
   constructor(
     public navCtrl: NavController,
@@ -31,25 +30,27 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
-    this.gqlPawQuery.getPaw("24a92ae0-d25c-11e7-bb86-7b6f7b6add22").subscribe(({ data }) => {
-      console.log('got query result', data);
-      this.queryResult = data.paw
-    })
-    this.gqlPawQuery.getPawMetadataByBeaconIds([
-      "6477637355",
-      "5927943861",
-      "5554060520"
-    ]).subscribe(({ data }) => {
-      console.log('got query result', data);      
-    })
+    // this.gqlPawQuery.getPaw("24a92ae0-d25c-11e7-bb86-7b6f7b6add22").subscribe(({ data }) => {
+    //   console.log('got query result', data);
+    //   this.queryResult = data.paw
+    // })
+    // this.gqlPawQuery.getPawMetadataByBeaconIds([
+    //   "6477637355",
+    //   "5927943861",
+    //   "5554060520"
+    // ]).subscribe(({ data }) => {
+    //   console.log('got query result', data);      
+    //   this.paws = data.pawMetadata;
+    // })
   }
 
 
   ionViewDidEnter() {
 
-    this.pawStore.stubbedScanning(100)
+    // this.pawStore.stubbedScanning(100)
+    this.pawStore.startScanning();
     // this.ebProvider.startRangingIBeacon();
-    this.ibProvider.startRanging();
+    // this.ibProvider.startRanging();
   }
 
 }

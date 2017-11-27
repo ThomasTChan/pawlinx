@@ -3,6 +3,9 @@ import { Http } from '@angular/http';
 import { Paw } from '../../models/paws';
 import { BehaviorSubject } from 'rxjs/Rx'
 import 'rxjs/add/operator/map';
+import { Observable } from 'apollo-client/util/Observable';
+import { IbeaconsProvider } from '../ibeacons/ibeacons';
+import { graphqlPawQueryProvider } from '../../graphql/query/graphql-paw-query';
 
 @Injectable()
 export class PawsDatastoreProvider {
@@ -13,7 +16,11 @@ export class PawsDatastoreProvider {
   // The sample rate of an observable
   private _frequency: number;
 
-  constructor(public http: Http) {
+  constructor(
+    public http: Http,
+    private ib: IbeaconsProvider,
+    private gqlPawQuery: graphqlPawQueryProvider
+  ) {
     this._frequency = 500;
     this._paws = new BehaviorSubject([]);
   }
@@ -90,4 +97,22 @@ export class PawsDatastoreProvider {
     })
   }
 
+  startScanning() {
+    this.ib.startRanging();
+    this.ib.ibeacons.subscribe(
+      result => {
+        console.log(result.beacons);
+        const mappedBeaconIds: String[] = result.beacons.map(x => {
+          return x.major.toString().concat(x.minor.toString())
+        })
+        this.gqlPawQuery.getPawMetadataByBeaconIds(mappedBeaconIds).subscribe(({ data }) => {
+          this._paws.next(data.pawMetadata);
+        })
+      },
+      error => {
+        console.log('RANGING ERROR');
+        console.log(error);
+      }
+    );
+  }
 }
